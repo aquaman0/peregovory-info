@@ -22,7 +22,8 @@ showChat.addEventListener("click", () => {
 const user = prompt("Enter your name");
 
 var peer = new Peer({
-  host: 'https://sistemapi-videochat-production.up.railway.app/chat',
+  host: '/',
+  port: 3030,
   path: '/peerjs',
   config: {
     'iceServers': [
