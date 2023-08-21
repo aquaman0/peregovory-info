@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body id="account">
+<header class="main-header">
+    <div class="header-30" onclick="window.location.href='/'">
+        <div class="logo">
+            <img src="img/logo_bblack_orange.png" alt="Проект Переговорные Игры">
+        </div>
+        <div class="logo-txt">
+            <h1 class="bold-h1">ПЕРЕГОВОРЫ</h1>
+            <h1 class="thin-h1">ИНФО</h1>
+        </div>
+    </div>
+    <div class="header-40">
+        <input id="menu-toggle" type="checkbox" />
+        <label class='menu-button-container' for="menu-toggle">
+            <div class='menu-button'></div>
+        </label>
+        <ul class="menu">
+            <li><a href="/#materials" data-hover="МАТЕРИАЛЫ">МАТЕРИАЛЫ</a></li>
+            <li><a href="/#reviews" data-hover="ОТЗЫВЫ">ОТЗЫВЫ</a></li>
+            <li><a href="/#footer" data-hover="КОНТАКТЫ">КОНТАКТЫ</a></li>
+            <% if (!locals.email) { %>
+                <li><a id="auth-btn" data-hover="ВХОД / РЕГИСТРАЦИЯ">ВХОД / РЕГИСТРАЦИЯ</a></li>
+            <% } %>
+        </ul>
+        <div class="login-btn-container">
+            <% if (locals.email) { %>
+                <button class="dropbtn"><i class="fa fa-user-circle-o"></i> <%= email %></button>
+                <div class="dropdown-content">
+                    <a href="#">Личный кабинет</a>
+                    <a href="/logout">Выход</a>
+                </div>
+            <% } %>
+        </div>
+        <div class="simulator-container">
+            <button class="simulator-btn">СИМУЛЯТОР</button>
+        </div>
+    </div>
+</header>
+<section class="acc-back">
+    <div class="account-container">
+        <form class="account-form" action="/account" method="POST">
+            <h3>ЛИЧНЫЙ КАБИНЕТ</h3>
+            <% if (locals.data) { %>
+                <% if (locals.data.username) { %>
+                    <label for="username" class="acc-label">Никнейм
+                        <input class="acc-form-input" type="text" name="username" id="username" value="<%= data.username %>" minlength="2">
+                    </label>
+                <% } %>
+                <% if (locals.data.email) { %>
+                    <label for="email" class="acc-label">E-mail
+                        <input class="acc-form-input" type="email" name="email" id="email" value="<%= data.email %>">
+                    </label>
+                    <label for="oldpassword" class="acc-label">Старый пароль
+                        <input class="acc-form-input" type="password" name="oldpassword" id="oldpassword" placeholder="Введите текущий пароль" required>
+                    </label>
+                    <label for="newpassword" class="acc-label">Новый пароль
+                        <input class="acc-form-input" type="password" name="newpassword" id="newpassword" placeholder="Обновите пароль или введите старый пароль" required>
+                    </label>
+                <% } %>
+                <% if (locals.data.phone) { %>
+                    <label for="phone" class="acc-label">Номер телефона
+                        <input class="acc-form-input" type="tel" name="phone" id="phone" value="<%= data.phone %>">
+                    </label>
+                <% } else { %>
+                    <label for="phone" class="acc-label">Номер телефона
+                        <input class="acc-form-input" type="tel" name="phone" id="phone" placeholder="+7(___)___-__-__">
+                    </label>
+                <% } %>
+                <% if (locals.data.city) { %>
+                    <label for="city" class="acc-label">Ваш город
+                        <input class="acc-form-input" type="text" name="city" id="city" value="<%= data.city %>">
+                    </label>
+                <% } else { %>
+                    <label for="city" class="acc-label">Ваш город
+                        <input class="acc-form-input" type="text" name="city" id="city" placeholder="Введите город">
+                    </label>
+                <% } %>
+            <% } %>
+            <input type="submit" class="reg-form-btn" value="Обновить профиль">
+            <div class="error-container">
+                <% if (locals.erroracc) { %>
+                    <% if (locals.erroracc === 'auth/email-already-in-use') { %>
+                        <b>Указанный email уже зарегистрирован на нашем сайте. Попробуйте выполнить вход.</b>
+                    <% } else { %>
+                        <b><%= erroracc %></b>
+                    <% } %>
+                <% } %>
+            </div>
+        </form>
+        <div class="credits-container">
+            <h3>КОЛИЧЕСТВО МИНУТ</h3>
+            <% if (locals.data.credits) { %>
+                <label for="credits" class="acc-label">
+                    <input class="acc-credits-input" name="credits" id="credits" value="<%= data.credits %>" disabled>
+                </label>
+            <% } else { %>
+                <label for="credits" class="acc-label">
+                    <input class="acc-credits-input" name="credits" id="credits" value="" disabled>
+                </label>
+            <% } %>
+            <h3 class="top-up-head">ПОПОЛНИТЬ СЧЁТ</h3>
+            <div class="top-up-btns">
+                <input class="fixed-top-up" type="button" value="+1">
+                <input class="fixed-top-up" type="button" value="+5">
+                <input class="fixed-top-up" type="button" value="+10">
+                <input class="fixed-top-up" type="button" value="+20">
+                <input class="fixed-top-up" type="button" value="+30">
+                <input class="fixed-top-up" type="button" value="+50">
+                <input class="fixed-top-up" type="button" value="+100">
+                <input class="fixed-top-up" type="button" value="+200">
+            </div>
+            <label for="top-up-credits" class="acc-label">
+                <input class="acc-credits-input top-up" type="number" name="top-up-credits" id="top-up-credits" value="100" min="0" pattern="[0-9]{1,4}">
+            </label>
+            <div class="plus-minus-container">
+                <div class="plus-minus-section">
+                    <input class="plus-minus-btn" type="button" id="minus-btn" value="-">
+                </div>
+                <div class="plus-minus-section">
+                    <input class="plus-minus-btn" type="button" id="plus-btn" value="+">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script src="js/jquery-3.7.0.js"></script>
+<script>
+    var inputTopUp = document.getElementById("top-up-credits");
+
+    $('.fixed-top-up').on("click", function() {
+        var num = parseInt(this.value);
+        inputTopUp.value = num;
+    });
+
+    $('#minus-btn').on("click", function() {
+        if ((parseInt(inputTopUp.value) - 1) > 0 ) {
+            inputTopUp.value = parseInt(inputTopUp.value) - 1;
+        } else {
+            alert('Баланс не может быть отрицательным!')
+        }
+    });
+
+    $('#plus-btn').on("click", function() {
+        inputTopUp.value = parseInt(inputTopUp.value) + 1;
+    });
+
+</script>
+</body>
+</html>

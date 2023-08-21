@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация / Вход на сайт Переговоры Инфо</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="main-header">
+    <div class="header-30" onclick="window.location.href='/'">
+        <div class="logo">
+            <img src="img/logo_bblack_orange.png" alt="Проект Переговорные Игры">
+        </div>
+        <div class="logo-txt">
+            <h1 class="bold-h1">ПЕРЕГОВОРЫ</h1>
+            <h1 class="thin-h1">ИНФО</h1>
+        </div>
+    </div>
+    <div class="header-40">
+        <input id="menu-toggle" type="checkbox" />
+        <label class='menu-button-container' for="menu-toggle">
+            <div class='menu-button'></div>
+        </label>
+        <ul class="menu">
+            <li><a href="/#materials" data-hover="МАТЕРИАЛЫ">МАТЕРИАЛЫ</a></li>
+            <li><a href="/#reviews" data-hover="ОТЗЫВЫ">ОТЗЫВЫ</a></li>
+            <li><a href="/#footer" data-hover="КОНТАКТЫ">КОНТАКТЫ</a></li>
+            <% if (!locals.email) { %>
+                <li><a id="auth-btn" data-hover="ВХОД / РЕГИСТРАЦИЯ">ВХОД / РЕГИСТРАЦИЯ</a></li>
+            <% } %>
+        </ul>
+        <div class="login-btn-container">
+            <% if (locals.email) { %>
+                <button class="dropbtn"><i class="fa fa-user-circle-o"></i> <%= email %></button>
+                <div class="dropdown-content">
+                    <a href="#">Личный кабинет</a>
+                    <a href="/logout">Выход</a>
+                </div>
+            <% } %>
+        </div>
+        <div class="simulator-container">
+            <button class="simulator-btn">СИМУЛЯТОР</button>
+        </div>
+    </div>
+</header>
+<div class="auth-back from-register">
+    <div class="auth-container auth-80">
+        <div class="auth-form-container orange-border">
+            <form class="register-form" action="/register" method="POST">
+                <h3>РЕГИСТРАЦИЯ</h3>
+                <input class="reg-form-input" type="text" name="username" id="username" placeholder="Ваш никнейм" minlength="2">
+                <input class="reg-form-input" type="email" name="email" id="email" placeholder="Электронная почта" required>
+                <input class="reg-form-input" type="password" name="password" id="password" placeholder="Придумайте пароль" required>
+                <label for="politics" class="checkbox-label">
+                    <input type="checkbox" id="politics" value="politics" required>
+                    Нажимая кнопку Регистрация я согласен с условиями использования сайта и с <a href="/">Политикой конфиденциальности</a></label>
+                <input type="submit" class="reg-form-btn" value="Регистрация">
+
+                <div class="error-container">
+                    <% if (locals.errorreg) { %>
+                        <% if (locals.errorreg === 'auth/email-already-in-use') { %>
+                            <b>Указанный email уже зарегистрирован на нашем сайте. Попробуйте выполнить вход.</b>
+                        <% } else { %>
+                            <b><%= errorreg %></b>
+                        <% } %>
+                    <% } %>
+                </div>
+            </form>
+        </div>
+        <div class="auth-form-container login-form">
+            <form class="register-form" action="/login" method="POST">
+                <h3>ВХОД</h3>
+                <input class="reg-form-input" type="email" name="email" id="email" placeholder="Электронная почта" required>
+                <input class="reg-form-input" type="password" name="password" id="password" placeholder="Ваш пароль" required>
+                <input type="submit" class="reg-form-btn" value="Вход">
+
+                <div class="error-container">
+                    <% if (locals.errorlog) { %>
+                        <% if (locals.errorlog === 'auth/user-not-found') { %>
+                            <b>Указанный email не найден. Проверьте правильность или зарегистрируйтесь.</b>
+                        <% } else if (locals.errorlog === 'auth/wrong-password') { %>
+                            <b>Пароль введён неправильно. Проверьте правильность и повторите попытку.</b>
+                        <% } else { %>
+                            <b><%= errorlog %></b>
+                        <% } %>
+                    <% } %>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

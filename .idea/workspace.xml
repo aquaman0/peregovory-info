@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="01976c51-cfb1-4af8-857d-5c8a4e408a5f" name="Changes" comment="Refactor App" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2TUm00jtYkbeynsOywsY2s8C9wD" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.8.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.39&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Никита/Desktop/sites/videochat/video-chat-v1/views&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\WebStorm\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Никита\Desktop\sites\videochat\video-chat-v1\views" />
+      <recent name="C:\Users\Никита\Desktop\sites\videochat\video-chat-v1\public\js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Никита\Desktop\sites\videochat\video-chat-v1" />
+      <recent name="C:\Users\Никита\Desktop\sites\videochat\video-chat-v1\src" />
+      <recent name="C:\Users\Никита\Desktop\sites\videochat\video-chat-v1\config" />
+      <recent name="C:\Users\Никита\Desktop\sites\videochat\video-chat-v1\node_modules" />
+      <recent name="C:\Users\Никита\Desktop\sites\videochat\video-chat-v1\public\img" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="sst.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/video-chat-v1/public/sst.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.sst.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="01976c51-cfb1-4af8-857d-5c8a4e408a5f" name="Changes" comment="" />
+      <created>1691105807112</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1691105807112</updated>
+      <workItem from="1691105808216" duration="2477000" />
+      <workItem from="1691108456724" duration="614000" />
+      <workItem from="1691152796235" duration="2405000" />
+      <workItem from="1691187278230" duration="650000" />
+      <workItem from="1691187966489" duration="6307000" />
+      <workItem from="1691328746659" duration="3077000" />
+      <workItem from="1691336940071" duration="4554000" />
+      <workItem from="1691358017686" duration="9414000" />
+      <workItem from="1691408267729" duration="911000" />
+      <workItem from="1691441534470" duration="4881000" />
+      <workItem from="1691509004199" duration="900000" />
+      <workItem from="1691530948898" duration="1302000" />
+      <workItem from="1691666728120" duration="146000" />
+      <workItem from="1691675876324" duration="80000" />
+      <workItem from="1691679829520" duration="11776000" />
+      <workItem from="1691704686322" duration="4289000" />
+      <workItem from="1691764118735" duration="16022000" />
+      <workItem from="1691873938981" duration="3290000" />
+      <workItem from="1691962761154" duration="9111000" />
+      <workItem from="1692020996936" duration="592000" />
+      <workItem from="1692042171312" duration="8596000" />
+      <workItem from="1692096486626" duration="6005000" />
+      <workItem from="1692112407383" duration="16000" />
+      <workItem from="1692131798293" duration="11261000" />
+      <workItem from="1692195923483" duration="6835000" />
+      <workItem from="1692356816765" duration="5815000" />
+      <workItem from="1692369789179" duration="8334000" />
+      <workItem from="1692389093865" duration="13601000" />
+      <workItem from="1692537863929" duration="11725000" />
+      <workItem from="1692561988061" duration="7793000" />
+      <workItem from="1692613533717" duration="5145000" />
+    </task>
+    <task id="LOCAL-00001" summary="Deleted">
+      <option name="closed" value="true" />
+      <created>1692616970355</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1692616970355</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Deleted lock">
+      <option name="closed" value="true" />
+      <created>1692617273833</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1692617273833</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Deleted lock">
+      <option name="closed" value="true" />
+      <created>1692617477861</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1692617477861</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Latest commit">
+      <option name="closed" value="true" />
+      <created>1692618128248</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1692618128248</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Latest commit">
+      <option name="closed" value="true" />
+      <created>1692618258178</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1692618258178</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Refactor App">
+      <option name="closed" value="true" />
+      <created>1692618867262</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1692618867262</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/video-chat-v1" />
+    </ignored-roots>
+    <MESSAGE value="Deleted" />
+    <MESSAGE value="Deleted lock" />
+    <MESSAGE value="Latest commit" />
+    <MESSAGE value="Refactor App" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor App" />
+  </component>
+</project>
