@@ -264,4 +264,4 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(() => console.log(`Active on ${port} port`));
+server.listen(port, () => console.log(`Active on ${port} port`));
