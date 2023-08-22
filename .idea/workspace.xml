@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01976c51-cfb1-4af8-857d-5c8a4e408a5f" name="Changes" comment="Refactor App">
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+    <list default="true" id="01976c51-cfb1-4af8-857d-5c8a4e408a5f" name="Changes" comment="Add Port">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +41,7 @@
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.8.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.39&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.41&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Никита/Desktop/sites/videochat/video-chat-v1/views&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -48,7 +49,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors&quot;,
     &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\WebStorm\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -114,7 +115,9 @@
       <workItem from="1692389093865" duration="13601000" />
       <workItem from="1692537863929" duration="11725000" />
       <workItem from="1692561988061" duration="7793000" />
-      <workItem from="1692613533717" duration="5488000" />
+      <workItem from="1692613533717" duration="8034000" />
+      <workItem from="1692652088886" duration="3058000" />
+      <workItem from="1692700186733" duration="1419000" />
     </task>
     <task id="LOCAL-00001" summary="Deleted">
       <option name="closed" value="true" />
@@ -172,7 +175,55 @@
       <option name="project" value="LOCAL" />
       <updated>1692623572243</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Refactor App 3">
+      <option name="closed" value="true" />
+      <created>1692623955827</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1692623955827</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Builds">
+      <option name="closed" value="true" />
+      <created>1692625219974</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1692625219974</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Builds">
+      <option name="closed" value="true" />
+      <created>1692626696926</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1692626696926</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add path">
+      <option name="closed" value="true" />
+      <created>1692652885676</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1692652885676</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Add path">
+      <option name="closed" value="true" />
+      <created>1692653358646</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1692653358646</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Add Port">
+      <option name="closed" value="true" />
+      <created>1692654479346</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1692654479346</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,6 +237,10 @@
     <MESSAGE value="Deleted lock" />
     <MESSAGE value="Latest commit" />
     <MESSAGE value="Refactor App" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor App" />
+    <MESSAGE value="Refactor App 3" />
+    <MESSAGE value="Builds" />
+    <MESSAGE value="Add path" />
+    <MESSAGE value="Add Port" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Port" />
   </component>
 </project>

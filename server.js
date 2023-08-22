@@ -14,6 +14,7 @@ const opinions = {
 }
 const dotenv = require("dotenv").config();
 const urlencodedParser = express.urlencoded({extended: false});
+const port = process.env.PORT || 3030;
 
 // Import the functions you need from the SDKs you need
 const { initializeApp } = require("firebase/app");
@@ -263,4 +264,4 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(process.env.PORT || 3030);
+server.listen(() => console.log(`Active on ${port} port`));
