@@ -48,8 +48,8 @@ input {
 
 .main {
   overflow: hidden;
-  height: 92vh;
-  display: flex;
+  height: 90vh;
+  display: none;
 }
 
 .main__left {
@@ -1216,4 +1216,11 @@ video {
   margin-top: 20px;
   border-top: 5px solid #ff6633;
   padding-top: 20px;
+}
+.users-list {
+  border: 1px solid #ffffff;
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  min-height: 50%;
 }

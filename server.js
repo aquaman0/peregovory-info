@@ -10,8 +10,8 @@ const io = require("socket.io")(server, {
 });
 const { ExpressPeerServer } = require("peer");
 const opinions = {
-  debug: true,
-}
+  debug: false,
+};
 const dotenv = require("dotenv").config();
 const urlencodedParser = express.urlencoded({extended: false});
 const port = process.env.PORT || 3030;
@@ -58,16 +58,37 @@ function getUserData(user, callback) {
   });
 }
 
+let cur_ID = '';
 app.get("/", (req, res) => {
-  const auth = getAuth();
-  const user = auth.currentUser;
-  if (user) {
-    getUserData(user, function(result) {
-      res.render("home", {username: result.username});
-    })
-  } else {
-    res.render("home");
+  async function getUUID() {
+    let uuid = await `${uuidv4()}`;
+    cur_ID = uuid;
+    console.log(cur_ID)
+    res.render("home", { roomId: uuid });
   }
+
+  if (cur_ID.length > 0) {
+    console.log(cur_ID);
+    res.render("home", { roomId: cur_ID });
+    cur_ID = '';
+  } else {
+    getUUID();
+  }
+});
+
+app.get("/:room", (req, res) => {
+  async function checkUser() {
+    const auth = getAuth();
+    let user = await auth.currentUser;
+    if (user) {
+      getUserData(user, function(result) {
+        res.render("home", { username: result.username, roomId: req.params.room });
+      })
+    } else {
+      res.render("home", { roomId: req.params.room });
+    }
+  }
+  checkUser();
 });
 
 app.get("/register", (req, res) => {
