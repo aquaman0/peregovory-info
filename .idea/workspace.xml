@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01976c51-cfb1-4af8-857d-5c8a4e408a5f" name="Changes" comment="Port Magic">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/home.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/home.ejs" afterDir="false" />
-    </list>
+    <list default="true" id="01976c51-cfb1-4af8-857d-5c8a4e408a5f" name="Changes" comment="Domain add" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -125,7 +119,7 @@
       <workItem from="1692786627280" duration="431000" />
       <workItem from="1692792829669" duration="4002000" />
       <workItem from="1692872180542" duration="37000" />
-      <workItem from="1692959630691" duration="7501000" />
+      <workItem from="1692959630691" duration="7991000" />
     </task>
     <task id="LOCAL-00001" summary="Deleted">
       <option name="closed" value="true" />
@@ -255,7 +249,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692702975809</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Domain add">
+      <option name="closed" value="true" />
+      <created>1692974997745</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1692974997745</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,6 +276,7 @@
     <MESSAGE value="Add path" />
     <MESSAGE value="Add Port" />
     <MESSAGE value="Port Magic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Port Magic" />
+    <MESSAGE value="Domain add" />
+    <option name="LAST_COMMIT_MESSAGE" value="Domain add" />
   </component>
 </project>

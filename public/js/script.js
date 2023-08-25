@@ -25,7 +25,7 @@ simBtn.onclick = function() {
 
   var peer = new Peer({
     host: '/',
-    port: 3030,
+    port: 443,
     path: '/peerjs',
     config: {
       'iceServers': [
