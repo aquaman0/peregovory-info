@@ -65,15 +65,16 @@ app.get("/:room", (req, res) => {
 
   async function checkUser() {
     const auth = getAuth();
-    let user = await auth.currentUser;
-    if (user) {
-      console.log("MY ID: " + user.uid);
-      getUserData(user, function(result) {
-        res.render("home", {roomId: req.params.room, uid: user.uid, user_data: result});
-      });
-    } else {
-      res.render("home", {roomId: req.params.room});
-    }
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log("MY ID: " + user.uid);
+        getUserData(user, function(result) {
+          res.render("home", { roomId: req.params.room, uid: user.uid, user_data: result });
+        });
+      } else {
+        res.render("home", { roomId: req.params.room });
+      }
+    })
   }
   checkUser();
 });
