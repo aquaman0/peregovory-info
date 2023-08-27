@@ -36,41 +36,40 @@ const firebaseConfig = {
 const firebase = initializeApp(firebaseConfig);
 
 const { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updatePassword, updateEmail, EmailAuthProvider, reauthenticateWithCredential } = require("firebase/auth");
-const { getDatabase, ref, set, child, get, update } = require("firebase/database");
+const { getDatabase, ref, set, child, get, update, onValue } = require("firebase/database");
 const database = getDatabase(firebase);
 
 app.use("/peerjs", ExpressPeerServer(server, opinions));
 app.use(express.static("public"));
-
-function getUserData(user, callback) {
-  const userId = user.uid;
-  const dbRef = ref(getDatabase());
-  get(child(dbRef, `users/${userId}`)).then(async (snapshot) => {
-    if (snapshot.exists()) {
-      let data = await snapshot.val();
-      callback(data);
-    } else {
-      let data = {};
-      callback(data);
-    }
-  }).catch((error) => {
-    console.error(error);
-  });
-}
-
 
 app.get("/", (req, res) => {
   res.redirect(`/${uuidv4()}`);
 });
 
 app.get("/:room", (req, res) => {
+  function getUserData(user, callback) {
+    const userId = user.uid;
+    const dbRef = ref(getDatabase());
+    get(child(dbRef, `users/${userId}`)).then(async (snapshot) => {
+      if (snapshot.exists()) {
+        let data = await snapshot.val();
+        callback(data);
+      } else {
+        let data = {};
+        callback(data);
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
+  }
+
   const auth = getAuth();
   var user = auth.currentUser;
-  console.log("USR: ", user);
   if (user) {
     console.log("MY ID: " + user.uid);
-    const userId = user.uid;
-    res.render("home", {roomId: req.params.room, uid: userId, user_data: result});
+    getUserData(user, function(result) {
+      res.render("home", {roomId: req.params.room, uid: user.uid, user_data: result});
+    });
   } else {
     res.render("home", {roomId: req.params.room});
   }
