@@ -1007,17 +1007,23 @@ video {
   z-index: 1;
 }
 /* Links inside the dropdown */
-.dropdown-content a {
+.dropdown-content a,
+.dropdown-content input {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
   font-size: 14px;
   font-weight: 800;
+  width: 100%;
+  border-radius: 0;
+  text-align: start;
 }
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {
+.dropdown-content a:hover,
+.dropdown-content input:hover {
   background-color: #ddd;
+  cursor: pointer;
 }
 /* Show the dropdown menu on hover */
 .login-btn-container:hover .dropdown-content {

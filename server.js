@@ -152,13 +152,18 @@ app.post("/login",  urlencodedParser, function (req, res) {
   }
 });
 
-app.get("/logout", function(req , res){
-  const auth = getAuth();
-  signOut(auth).then(() => {
-    res.redirect("/");
-  }).catch((error) => {
-    //...
-  });
+app.post("/logout", (req, res) => {
+  try {
+    const auth = getAuth();
+    signOut(auth).then(() => {
+      res.redirect("/");
+    }).catch((error) => {
+      console.log(error.message);
+    });
+  } catch(e) {
+    console.log(e);
+    res.redirect('/');
+  }
 });
 
 app.get("/account", function (req, res) {
@@ -205,60 +210,6 @@ app.post("/account",  urlencodedParser, function (req, res) {
     });
   }
   updateUserInfo(email, username, oldpassword, newpassword, phone, city);
-});
-
-app.get("/chat", (req, res) => {
-  async function checkUser() {
-    const auth = getAuth();
-    let user = await auth.currentUser;
-    if (user) {
-      res.redirect(`/chat-${uuidv4()}`);
-    } else {
-      res.render("register", {errorreg: 'Пожалуйста зарегистрируйтесь или войдите.'});
-    }
-  }
-  checkUser();
-});
-
-app.get("/chat-:room", (req, res) => {
-  async function checkUser() {
-    const auth = getAuth();
-    let user = await auth.currentUser;
-    if (user) {
-      res.render("room", { roomId: req.params.room });
-    } else {
-      res.render("register", {errorreg: 'Пожалуйста зарегистрируйтесь или войдите.'});
-    }
-  }
-  checkUser();
-});
-
-
-app.get("/conference", (req, res) => {
-  async function checkUser() {
-    const auth = getAuth();
-    let user = await auth.currentUser;
-    if (user) {
-      res.redirect(`/conference-${uuidv4()}`);
-    } else {
-      res.render("register", {errorreg: 'Пожалуйста зарегистрируйтесь или войдите.'});
-    }
-  }
-  checkUser();
-});
-app.get("/conference-:room", (req, res) => {
-  async function checkUser() {
-    const auth = getAuth();
-    let user = await auth.currentUser;
-    if (user) {
-      getUserData(user, function(result) {
-        res.render("confa", { roomId: req.params.room, username: result.username });
-      });
-    } else {
-      res.render("register", {errorreg: 'Пожалуйста зарегистрируйтесь или войдите.'});
-    }
-  }
-  checkUser();
 });
 
 const users = {};

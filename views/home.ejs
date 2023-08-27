@@ -96,13 +96,17 @@
                     <button class="dropbtn"><i class="fa fa-user-circle-o"></i> <%= user_data.username %></button>
                     <div class="dropdown-content">
                         <a href="/account" target="_blank">Личный кабинет</a>
-                        <a href="/logout">Выход</a>
+                        <form action="/logout" method="POST">
+                            <input type="submit" value="Выход">
+                        </form>
                     </div>
                 <% } else if (locals.user_data.email) { %>
                         <button class="dropbtn"><i class="fa fa-user-circle-o"></i> <%= user_data.email %></button>
                         <div class="dropdown-content">
                             <a href="/account" target="_blank">Личный кабинет</a>
-                            <a href="/logout">Выход</a>
+                            <form action="/logout" method="POST">
+                                <input type="submit" value="Выход">
+                            </form>
                         </div>
                 <% } %>
             <% } %>
@@ -591,7 +595,7 @@
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/custom.js"></script>
 <% if (locals.user_data) { %>
-    <script src="js/script.js"></script>
+    <script src="js/scrip2t.js"></script>
 <% } %>
 
 
