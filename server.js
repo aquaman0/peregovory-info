@@ -58,22 +58,9 @@ function getUserData(user, callback) {
   });
 }
 
-let cur_ID = '';
-app.get("/", (req, res) => {
-  async function getUUID() {
-    let uuid = await `${uuidv4()}`;
-    cur_ID = uuid;
-    console.log(cur_ID)
-    res.render("home", { roomId: uuid });
-  }
 
-  if (cur_ID.length > 0) {
-    console.log(cur_ID);
-    res.render("home", { roomId: cur_ID });
-    cur_ID = '';
-  } else {
-    getUUID();
-  }
+app.get("/", (req, res) => {
+  res.redirect(`/${uuidv4()}`);
 });
 
 app.get("/:room", (req, res) => {
@@ -81,8 +68,9 @@ app.get("/:room", (req, res) => {
     const auth = getAuth();
     let user = await auth.currentUser;
     if (user) {
+      const userId = user.uid;
       getUserData(user, function(result) {
-        res.render("home", { username: result.username, roomId: req.params.room });
+        res.render("home", { roomId: req.params.room, uid: userId, user_data: result });
       })
     } else {
       res.render("home", { roomId: req.params.room });
@@ -273,6 +261,7 @@ app.get("/conference-:room", (req, res) => {
   checkUser();
 });
 
+const users = {};
 io.on("connection", (socket) => {
   socket.on("join-room", (roomId, userId, userName) => {
     socket.join(roomId);
@@ -283,6 +272,24 @@ io.on("connection", (socket) => {
       io.to(roomId).emit("createMessage", message, userName);
     });
   });
+
+  console.log('a user connected');
+
+  socket.on("login", function(data){
+    console.log('a user ' + data.uid + ' connected');
+    // saving userId to object with socket ID
+    users[socket.id] = { roomid: data.roomId, uid: data.uid, uname: data.user_name };
+    console.log(users);
+    socket.emit("online-login", { data: users[socket.id] });
+  });
+
+  socket.on("disconnect", function(){
+    console.log('user ' + users[socket.id] + ' disconnected');
+    socket.emit("online-disconnect", { data: users[socket.id] });
+    // remove saved socket from users object
+    delete users[socket.id];
+  });
+
 });
 
 server.listen(port, () => console.log(`Active on ${port} port`));
