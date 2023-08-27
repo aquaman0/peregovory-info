@@ -63,16 +63,19 @@ app.get("/:room", (req, res) => {
     });
   }
 
-  const auth = getAuth();
-  var user = auth.currentUser;
-  if (user) {
-    console.log("MY ID: " + user.uid);
-    getUserData(user, function(result) {
-      res.render("home", {roomId: req.params.room, uid: user.uid, user_data: result});
-    });
-  } else {
-    res.render("home", {roomId: req.params.room});
+  async function checkUser() {
+    const auth = getAuth();
+    let user = await auth.currentUser;
+    if (user) {
+      console.log("MY ID: " + user.uid);
+      getUserData(user, function(result) {
+        res.render("home", {roomId: req.params.room, uid: user.uid, user_data: result});
+      });
+    } else {
+      res.render("home", {roomId: req.params.room});
+    }
   }
+  checkUser();
 });
 
 app.get("/register", (req, res) => {
@@ -156,51 +159,6 @@ app.post("/logout", (req, res) => {
   }
 });
 
-app.get("/account", function (req, res) {
-  const auth = getAuth();
-  const user = auth.currentUser;
-  if (user) {
-    getUserData(user, function(result) {
-      res.render("account", {data: result});
-    })
-  } else {
-    res.render("register");
-  }
-});
-app.post("/account",  urlencodedParser, function (req, res) {
-  const {email, username, oldpassword, newpassword, phone, city} = req.body;
-  async function updateUserInfo (email, username, oldpassword, newpassword, phone, city) {
-    const db = getDatabase();
-    const auth = getAuth();
-    let user = await auth.currentUser;
-    var credential = EmailAuthProvider.credential(
-        user.email,
-        oldpassword
-    );
-    reauthenticateWithCredential(user, credential).then(async function () {
-      const updates = {};
-      updates['/users/' + user.uid + '/username'] = username;
-      updates['/users/' + user.uid + '/email'] = email;
-      updates['/users/' + user.uid + '/phone'] = phone;
-      updates['/users/' + user.uid + '/city'] = city;
-      updateEmail(user, email).then(() => {
-        updatePassword(user, newpassword).then(() => {
-          console.log();
-        }).catch((error) => {
-          console.log(error);
-        });
-      }).catch((error) => {
-        console.log(error);
-      });
-      await update(ref(db), updates);
-      res.redirect("/account");
-    }).catch(function(error) {
-      console.log(error.code);
-      res.redirect("/account");
-    });
-  }
-  updateUserInfo(email, username, oldpassword, newpassword, phone, city);
-});
 
 io.on("connection", (socket) => {
   socket.on("join-room", (roomId, userId, userName) => {
