@@ -230,8 +230,7 @@ io.on("connection", (socket) => {
     console.log('a user ' + data.uid + ' connected');
     // saving userId to object with socket ID
     users[socket.id] = { roomid: data.roomId, uid: data.uid, uname: data.user_name };
-    console.log(users);
-    socket.emit("online-login", { data: users[socket.id] });
+    socket.emit("online-login", { data: users, sId: socket.id });
   });
 
   socket.on("disconnect", function(){

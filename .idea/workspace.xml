@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="01976c51-cfb1-4af8-857d-5c8a4e408a5f" name="Changes" comment="Port changed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/home.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/home.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +126,7 @@
       <workItem from="1692959630691" duration="13473000" />
       <workItem from="1692994132172" duration="13546000" />
       <workItem from="1693081588791" duration="4529000" />
-      <workItem from="1693129547535" duration="11074000" />
+      <workItem from="1693129547535" duration="13991000" />
     </task>
     <task id="LOCAL-00001" summary="Deleted">
       <option name="closed" value="true" />
@@ -282,7 +280,31 @@
       <option name="project" value="LOCAL" />
       <updated>1693139251338</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Port changed">
+      <option name="closed" value="true" />
+      <created>1693143118817</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1693143118817</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Port changed">
+      <option name="closed" value="true" />
+      <created>1693143140954</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1693143140954</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Port changed">
+      <option name="closed" value="true" />
+      <created>1693143291732</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1693143291732</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -1238,6 +1238,7 @@ video {
   width: 100%;
   display: inline-grid;
   grid-template-columns: 10% 90%;
+  margin-bottom: 10px;
 }
 .user-container:hover {
   cursor: pointer;

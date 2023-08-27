@@ -23,9 +23,14 @@ showChat.addEventListener("click", () => {
 const un = document.getElementById("username");
 const user = un.innerText;
 socket.on("online-login", function (data) {
-  var div_id = data.data.uid;
-  var div_onclick = "window.location.href='/" + data.data.roomid + "'";
-  onlineUsers.innerHTML += "<div class='user-container' id=" + div_id + " onclick=" + div_onclick + "><i class='fa fa-user-o name-online'></i><p class='name-online'>" + data.data.uname + "</p></div>";
+  var json = data.data;
+  var jsonLength = Object.keys(json).length;
+  Object.entries(json).forEach((entry) => {
+    const [key, value] = entry;
+    var div_id = value.uname;
+    var div_onclick = "window.location.href='/" + value.roomid + "'";
+    onlineUsers.innerHTML += "<div class='user-container' id=" + div_id + " onclick=" + div_onclick + "><i class='fa fa-user-o name-online'></i><p class='name-online'>" + value.uname + "</p></div>";
+  });
 });
 
 socket.on("online-disconnect", function (data) {
@@ -35,7 +40,7 @@ socket.on("online-disconnect", function (data) {
 
 var peer = new Peer({
   host: '/',
-  port: 443,
+  port: 3030,
   path: '/peerjs',
   config: {
     'iceServers': [
