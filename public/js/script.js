@@ -22,25 +22,11 @@ showChat.addEventListener("click", () => {
 
 const un = document.getElementById("username");
 const user = un.innerText;
-socket.on("online-login", function (data) {
-  var json = data.data;
-  var jsonLength = Object.keys(json).length;
-  Object.entries(json).forEach((entry) => {
-    const [key, value] = entry;
-    var div_id = value.uname;
-    var div_onclick = "window.location.href='/" + value.roomid + "'";
-    onlineUsers.innerHTML += "<div class='user-container' id=" + div_id + " onclick=" + div_onclick + "><i class='fa fa-user-o name-online'></i><p class='name-online'>" + value.uname + "</p></div>";
-  });
-});
 
-socket.on("online-disconnect", function (data) {
-  var uid = data.data.uid;
-  document.getElementById(uid).remove();
-});
 
 var peer = new Peer({
   host: '/',
-  port: 443,
+  port: 3030,
   path: '/peerjs',
   config: {
     'iceServers': [
@@ -105,7 +91,6 @@ const connectToNewUser = (userId, stream) => {
 peer.on("open", (id) => {
   console.log('my id is' + id);
   socket.emit("join-room", ROOM_ID, id, user);
-  socket.emit("login", { roomId: ROOM_ID, uid: uid, user_name: user_name });
 });
 
 const addVideoStream = (video, stream) => {

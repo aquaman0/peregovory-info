@@ -210,7 +210,6 @@ app.post("/account",  urlencodedParser, function (req, res) {
   updateUserInfo(email, username, oldpassword, newpassword, phone, city);
 });
 
-const users = {};
 io.on("connection", (socket) => {
   socket.on("join-room", (roomId, userId, userName) => {
     socket.join(roomId);
@@ -221,23 +220,6 @@ io.on("connection", (socket) => {
       io.to(roomId).emit("createMessage", message, userName);
     });
   });
-
-  console.log('a user connected');
-
-  socket.on("login", function(data){
-    console.log('a user ' + data.uid + ' connected');
-    // saving userId to object with socket ID
-    users[socket.id] = { roomid: data.roomId, uid: data.uid, uname: data.user_name };
-    socket.emit("online-login", { data: users, sId: socket.id });
-  });
-
-  socket.on("disconnect", function(){
-    console.log('user ' + users[socket.id] + ' disconnected');
-    socket.emit("online-disconnect", { data: users });
-    // remove saved socket from users object
-    delete users[socket.id];
-  });
-
 });
 
 server.listen(port, () => console.log(`Active on ${port} port`));

@@ -64,6 +64,91 @@
         </div>
     </div>
 </div>
+<% if (locals.user_data) { %>
+    <section class="acc-back">
+        <div class="account-container">
+            <i class="fa fa-close hidden-x-acc"></i>
+            <form class="account-form" action="/account" method="POST">
+                <h3>ЛИЧНЫЙ КАБИНЕТ</h3>
+                <% if (locals.user_data.username) { %>
+                    <label for="username" class="acc-label">Никнейм
+                        <input class="acc-form-input" type="text" name="username" id="username" value="<%= user_data.username %>" minlength="2">
+                    </label>
+                <% } %>
+                <% if (locals.user_data.email) { %>
+                    <label for="email" class="acc-label">E-mail
+                        <input class="acc-form-input" type="email" name="email" id="email" value="<%= user_data.email %>">
+                    </label>
+                    <label for="oldpassword" class="acc-label">Старый пароль
+                        <input class="acc-form-input" type="password" name="oldpassword" id="oldpassword" placeholder="Введите текущий пароль" required>
+                    </label>
+                    <label for="newpassword" class="acc-label">Новый пароль
+                        <input class="acc-form-input" type="password" name="newpassword" id="newpassword" placeholder="Обновите пароль или введите старый пароль" required>
+                    </label>
+                <% } %>
+                <% if (locals.user_data.phone) { %>
+                    <label for="phone" class="acc-label">Номер телефона
+                        <input class="acc-form-input" type="tel" name="phone" id="phone" value="<%= user_data.phone %>">
+                    </label>
+                <% } else { %>
+                    <label for="phone" class="acc-label">Номер телефона
+                        <input class="acc-form-input" type="tel" name="phone" id="phone" placeholder="+7(___)___-__-__">
+                    </label>
+                <% } %>
+                <% if (locals.user_data.city) { %>
+                    <label for="city" class="acc-label">Ваш город
+                        <input class="acc-form-input" type="text" name="city" id="city" value="<%= user_data.city %>">
+                    </label>
+                <% } else { %>
+                    <label for="city" class="acc-label">Ваш город
+                        <input class="acc-form-input" type="text" name="city" id="city" placeholder="Введите город">
+                    </label>
+                <% } %>
+                <input type="submit" class="reg-form-btn" value="Обновить профиль">
+                <div class="error-container">
+                    <% if (locals.erroracc) { %>
+                        <b><%= erroracc %></b>
+                    <% } %>
+                </div>
+            </form>
+            <div class="credits-container">
+                <h3>КОЛИЧЕСТВО МИНУТ</h3>
+                <% if (locals.user_data.credits) { %>
+                    <label for="credits" class="acc-label">
+                        <input class="acc-credits-input" name="credits" id="credits" value="<%= user_data.credits %>" disabled>
+                    </label>
+                <% } else { %>
+                    <label for="credits" class="acc-label">
+                        <input class="acc-credits-input" name="credits" id="credits" value="" disabled>
+                    </label>
+                <% } %>
+                <h3 class="top-up-head">ПОПОЛНИТЬ СЧЁТ</h3>
+                <div class="top-up-btns">
+                    <input class="fixed-top-up" type="button" value="+1">
+                    <input class="fixed-top-up" type="button" value="+5">
+                    <input class="fixed-top-up" type="button" value="+10">
+                    <input class="fixed-top-up" type="button" value="+20">
+                    <input class="fixed-top-up" type="button" value="+30">
+                    <input class="fixed-top-up" type="button" value="+50">
+                    <input class="fixed-top-up" type="button" value="+100">
+                    <input class="fixed-top-up" type="button" value="+200">
+                </div>
+                <label for="top-up-credits" class="acc-label">
+                    <input class="acc-credits-input top-up" type="number" name="top-up-credits" id="top-up-credits" value="100" min="0" pattern="[0-9]{1,4}">
+                </label>
+                <div class="plus-minus-container">
+                    <div class="plus-minus-section">
+                        <input class="plus-minus-btn" type="button" id="minus-btn" value="-">
+                    </div>
+                    <div class="plus-minus-section">
+                        <input class="plus-minus-btn" type="button" id="plus-btn" value="+">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+<% } %>
 <header class="main-header">
     <div class="header-30">
         <div class="logo">
@@ -95,7 +180,7 @@
                 <% if (locals.user_data.username) { %>
                     <button class="dropbtn"><i class="fa fa-user-circle-o"></i> <%= user_data.username %></button>
                     <div class="dropdown-content">
-                        <a href="/account" target="_blank">Личный кабинет</a>
+                        <a target="_blank" id="acc-btn">Личный кабинет</a>
                         <form action="/logout" method="POST">
                             <input type="submit" value="Выход">
                         </form>
@@ -103,7 +188,7 @@
                 <% } else if (locals.user_data.email) { %>
                         <button class="dropbtn"><i class="fa fa-user-circle-o"></i> <%= user_data.email %></button>
                         <div class="dropdown-content">
-                            <a href="/account" target="_blank">Личный кабинет</a>
+                            <a target="_blank" id="acc-btn">Личный кабинет</a>
                             <form action="/logout" method="POST">
                                 <input type="submit" value="Выход">
                             </form>
@@ -552,9 +637,15 @@
     var authBtn = $("#auth-btn");
     var authBack = $(".auth-back");
     var simBtn = $("#sim-btn");
+    var accBtn = $("#acc-btn");
+    var accBack = $(".acc-back");
 
     authBtn.on("click", function() {
         authBack.css("display", "flex").hide().fadeIn(300);
+    });
+
+    accBtn.on("click", function() {
+        accBack.css("display", "flex").hide().fadeIn(300);
     });
 
     simBtn.on("click", function() {
@@ -587,9 +678,29 @@
             var layout = $(e.target).closest('div');
             layout.removeClass('m-layout-active');
         } else if ($(e.target).hasClass('hidden-x-auth')) {
-            $(authBack).fadeOut(300)
+            authBack.fadeOut(300);
+        } else if ($(e.target).hasClass('hidden-x-acc')) {
+            accBack.fadeOut(300);
         }
         e.stopPropagation();
+    });
+
+    var inputTopUp = document.getElementById("top-up-credits");
+
+    $('.fixed-top-up').on("click", function() {
+        inputTopUp.value = parseInt(this.value);
+    });
+
+    $('#minus-btn').on("click", function() {
+        if ((parseInt(inputTopUp.value) - 1) > 0 ) {
+            inputTopUp.value = parseInt(inputTopUp.value) - 1;
+        } else {
+            alert('Баланс не может быть отрицательным!')
+        }
+    });
+
+    $('#plus-btn').on("click", function() {
+        inputTopUp.value = parseInt(inputTopUp.value) + 1;
     });
 </script>
 <script src="js/owl.carousel.min.js"></script>
