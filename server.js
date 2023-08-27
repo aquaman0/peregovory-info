@@ -67,6 +67,7 @@ app.get("/:room", (req, res) => {
   const auth = getAuth();
   let user = auth.currentUser;
   if (user) {
+    console.log("MY ID: " + user.uid)
     const userId = user.uid;
     getUserData(user, function(result) {
       res.render("home", { roomId: req.params.room, uid: userId, user_data: result });
