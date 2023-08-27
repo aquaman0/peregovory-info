@@ -70,9 +70,7 @@ app.get("/:room", (req, res) => {
   if (user) {
     console.log("MY ID: " + user.uid);
     const userId = user.uid;
-    getUserData(user, function (result) {
-      res.render("home", {roomId: req.params.room, uid: userId, user_data: result});
-    });
+    res.render("home", {roomId: req.params.room, uid: userId, user_data: result});
   } else {
     res.render("home", {roomId: req.params.room});
   }
@@ -132,7 +130,6 @@ app.post("/login",  urlencodedParser, function (req, res) {
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           // Signed in
-          const user = userCredential.user;
           res.redirect('/');
         })
         .catch((error) => {
