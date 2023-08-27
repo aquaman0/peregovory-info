@@ -63,17 +63,16 @@ app.get("/", (req, res) => {
   res.redirect(`/${uuidv4()}`);
 });
 
-app.get("/:room", async (req, res) => {
+app.get("/:room", (req, res) => {
   const auth = getAuth();
-  console.log("AUTH: ", auth);
-  let user = await auth.currentUser;
+  var user = auth.currentUser;
   console.log("USR: ", user);
   if (user) {
-    console.log("MY ID: " + user.uid)
+    console.log("MY ID: " + user.uid);
     const userId = user.uid;
     getUserData(user, function (result) {
       res.render("home", {roomId: req.params.room, uid: userId, user_data: result});
-    })
+    });
   } else {
     res.render("home", {roomId: req.params.room});
   }
