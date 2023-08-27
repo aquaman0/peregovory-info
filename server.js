@@ -65,7 +65,9 @@ app.get("/", (req, res) => {
 
 app.get("/:room", async (req, res) => {
   const auth = getAuth();
+  console.log("AUTH: ", auth);
   let user = await auth.currentUser;
+  console.log("USR: ", user);
   if (user) {
     console.log("MY ID: " + user.uid)
     const userId = user.uid;
