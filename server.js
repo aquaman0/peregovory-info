@@ -64,19 +64,16 @@ app.get("/", (req, res) => {
 });
 
 app.get("/:room", (req, res) => {
-  async function checkUser() {
-    const auth = getAuth();
-    let user = await auth.currentUser;
-    if (user) {
-      const userId = user.uid;
-      getUserData(user, function(result) {
-        res.render("home", { roomId: req.params.room, uid: userId, user_data: result });
-      })
-    } else {
-      res.render("home", { roomId: req.params.room });
-    }
+  const auth = getAuth();
+  let user = auth.currentUser;
+  if (user) {
+    const userId = user.uid;
+    getUserData(user, function(result) {
+      res.render("home", { roomId: req.params.room, uid: userId, user_data: result });
+    })
+  } else {
+    res.render("home", { roomId: req.params.room });
   }
-  checkUser();
 });
 
 app.get("/register", (req, res) => {
@@ -235,7 +232,7 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", function(){
     console.log('user ' + users[socket.id] + ' disconnected');
-    socket.emit("online-disconnect", { data: users[socket.id] });
+    socket.emit("online-disconnect", { data: users });
     // remove saved socket from users object
     delete users[socket.id];
   });
