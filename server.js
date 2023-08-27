@@ -64,7 +64,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/:room", async (req, res) => {
-  let auth = await getAuth();
+  const auth = getAuth();
   let user = await auth.currentUser;
   if (user) {
     console.log("MY ID: " + user.uid)
@@ -89,37 +89,32 @@ app.get("/register", (req, res) => {
 });
 app.post("/register", urlencodedParser, function (req, res) {
   try {
+    function writeUserData(userId, name, email) {
+      const db = getDatabase();
+      set(ref(db, 'users/' + userId), {
+        username: name,
+        email: email,
+        credits: 10,
+        phone: 0,
+        city: '',
+      });
+      console.log("User " + username + " signed in.");
+    }
+
     const {email, username, password} = req.body;
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          // Signed in
-          const user = userCredential.user;
-          res.redirect("/");
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          res.render("register", {errorreg: errorCode});
-        });
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        function writeUserData(userId, name, email) {
-          const db = getDatabase();
-          set(ref(db, 'users/' + userId), {
-            username: name,
-            email: email,
-            credits: 10,
-            phone: 0,
-            city: '',
-          });
-          console.log("User" + username + "signed in.");
-        }
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
         writeUserData(user.uid, username, email);
-      } else {
-        console.log("No user is signed in.");
-      }
-    });
+        res.redirect("/");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        res.render("register", {errorreg: errorCode});
+      });
   } catch(e) {
     console.log(e);
     res.redirect('/');
