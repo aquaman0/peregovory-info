@@ -40,7 +40,7 @@ socket.on("online-disconnect", function (data) {
 
 var peer = new Peer({
   host: '/',
-  port: 3030,
+  port: 443,
   path: '/peerjs',
   config: {
     'iceServers': [
