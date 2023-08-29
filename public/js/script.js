@@ -26,7 +26,7 @@ const user = un.innerText;
 
 var peer = new Peer({
   host: '/',
-  port: 443,
+  port: 3030,
   path: '/peerjs',
   config: {
     'iceServers': [
